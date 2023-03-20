@@ -1,0 +1,20 @@
+
+
+
+curl -X POST http:/localhost:1993/equipment/drop -H "Content-Type: application/json"
+curl -X POST http:/localhost:1993/equipment/delete -H "Content-Type: application/json"
+curl -X POST http:/localhost:1993/equipment/create -H "Content-Type: application/json"
+curl -X POST http:/localhost:1993/equipment/get -H "Content-Type: application/json"
+
+
+
+curl -X POST http:/localhost:4242/create-payment-intent -H "Content-Type: application/json" -d '{"paymentMethodType":"card","currency":"USD","customerId":"cus_NU3uxOae5xn34p"}'
+
+curl -X POST http:/localhost:4242/retrieve-payment-intent -H "Content-Type: application/json" -d '{"paymentIntentId":"pi_3Mj5oPAViU45rI6F2ZIwRtqG"}'
+
+stripe listen --forward-to localhost:4242/webhook
+
+curl -X POST http:/localhost:4242/create-customer -H "Content-Type: application/json" -d '{}'
+
+
+https://stripe.com/docs/payments/payment-intents
