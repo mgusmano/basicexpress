@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" class="fill">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" xhref="%PUBLIC_URL%/favicon.ico" />
+		<link rel="icon" xhref="favicon.ico" />
+		<link rel="icon" href="favicon.svg" type="image/svg+xml">
+		<link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" /> 
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="Web site created using create-react-app" />
+		<title>CardServer</title>
+		<style>
+			* {box-sizing:border-box;font-family: 'proxima_nova_rgregular', Helvetica, Arial, sans-serif;}
+			.fill {width:100%;height:100%;margin:0;padding:0;box-sizing:border-box;overflow:hidden;}
+			.zrow {display:flex;flex-direction:row;overflow:hidden;flex:1;}
+			.zrowflat {display:flex;flex-direction:row;overflow:hidden;}
+			.zcol {display:flex;flex-direction:column;overflow:hidden;flex:1;}
+			.zzzzcolflat {display:flex;flex-direction:column;overflow:hidden;}
+			.zcenter {justify-content:center;align-items:center}
+			.zscroll {overflow:overlay;}
+			.zh400 {flex:none;height:400px;}
+			.zh200 {flex:none;height:200px;}
+			.zh100 {flex:none;height:100px;}
+			.zh75 {flex:none;height:75px;}
+			.zh50 {flex:none;height:50px;}
+			.zh25 {flex:none;height:25px;}
+
+			.vbox {display:flex;flex-direction:column;overflow:hidden}
+			.hbox {display:flex;flex-direction:row;overflow:hidden}
+			.vflex {flex:1;display:flex;flex-direction:column;overflow:hidden}
+			.hflex {flex:1;display:flex;flex-direction:row;overflow:hidden}
+			.vboxflex {flex:1;display:flex;flex-direction:column;overflow:hidden}
+			.vboxflexscroll {flex:1;display:flex;flex-direction:column;overflow:scroll}
+			.hboxflex {flex:1;display:flex;flex-direction:row;overflow:hidden}
+			.center {justify-content:center;align-items:center}
+			.red {border:1px solid red}
+			.green {border:1px solid green}
+			.blue {border:1px solid blue}
+		</style>
+
+		<script>
+			async function drop() {
+				var response = await axios.post('/equipment/drop')
+				console.log(response)
+			}
+			async function create() {
+				var response = await axios.post('/equipment/create')
+				console.log(response)
+			}
+
+			async function get() {
+				var response = await axios.post('/equipment/get')
+				if (response.data.status === 'ok') {
+					console.log(response.data.data)
+					//console.log(JSON.stringify(response.data.data))
+				}
+				else {
+					console.log(response)
+				}
+			}
+
+			async function getunique() {
+				var response = await axios.post('/equipment/getunique')
+				if (response.data.status === 'ok') {
+					//console.log(response.data.data)
+					console.log(JSON.stringify(response.data.data))
+				}
+				else {
+					console.log(response)
+				}
+			}
+
+		</script>
+	</head>
+	<body class="zcol">
+		<form action="/equipment/upload" method="post" class="zcol" style="margin:100px 100px 100px 100px;" enctype="multipart/form-data">
+			<input type="file" id="myFile" name="fileName">
+			<input type="submit">
+		</form>
+
+		<div class="zcol" style="margin:1px 100px 100px 100px;" >
+
+			<button onclick="drop()">drop</button>
+			<button onclick="create()">create</button>
+			<button onclick="get()">get</button>
+			<button onclick="getunique()">get unique</button>
+
+		</div>
+
+
+	</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "basicexpress",
+  "version": "1.0.0",
+  "description": "",
+	"main": "server.js",
+	"type": "module",
+  "scripts": {
+    "start": "node --watch ./server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
+  }
+}
